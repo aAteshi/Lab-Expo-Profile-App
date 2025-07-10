@@ -1,19 +1,31 @@
-import { Stack } from 'expo-router';
+import { Stack } from "expo-router";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
-export default function RootLayout() {
+function RootLayoutNav() {
+  const { colors } = useTheme();
+
   return (
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#f4511e',
+          backgroundColor: colors.headerBackground,
         },
-        headerTintColor: '#fff',
+        headerTintColor: "#fff",
         headerTitleStyle: {
-          fontWeight: 'bold',
+          fontWeight: "bold",
         },
-      }}>
-      <Stack.Screen name="index" />
-      <Stack.Screen name="details" />
+      }}
+    >
+      <Stack.Screen name="index" options={{ title: "Profile" }} />
+      <Stack.Screen name="about" options={{ title: "About" }} />
     </Stack>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <ThemeProvider>
+      <RootLayoutNav />
+    </ThemeProvider>
   );
 }
