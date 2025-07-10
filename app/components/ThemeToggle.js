@@ -10,13 +10,13 @@ const ThemeToggle = () => {
       style={[
         styles.button,
         {
-          backgroundColor: colors.primary,
+          backgroundColor: "#ffffff",
           shadowColor: colors.primary,
         },
       ]}
       onPress={toggleTheme}
     >
-      <Text style={[styles.text, { color: "#ffffff" }]}>
+      <Text style={[styles.text, { color: "#000000" }]}>
         {isDarkMode ? "☀️" : "🌙"}
       </Text>
     </TouchableOpacity>

@@ -4,6 +4,53 @@ import { useTheme } from "./context/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle";
 import { ProfileStyles, CommonStyles } from "./styles";
 
+const skills = [
+  "React",
+  "Angular",
+  "JavaScript",
+  "TypeScript",
+  "React Native",
+  "Node.js",
+];
+
+const ProfileCard = ({ icon, title, children, colors }) => (
+  <View
+    style={[
+      ProfileStyles.infoCard,
+      {
+        backgroundColor: colors.cardBackground,
+        borderColor: colors.cardBorder,
+        shadowColor: colors.cardShadow,
+      },
+    ]}
+  >
+    <View style={ProfileStyles.cardHeader}>
+      <View
+        style={[
+          ProfileStyles.iconContainer,
+          { backgroundColor: colors.iconBackground },
+        ]}
+      >
+        <Text style={ProfileStyles.icon}>{icon}</Text>
+      </View>
+      <Text style={[ProfileStyles.cardTitle, { color: colors.text }]}>
+        {title}
+      </Text>
+    </View>
+    {children}
+  </View>
+);
+
+const SkillBadge = ({ skill, colors }) => (
+  <View
+    style={[ProfileStyles.skillBadge, { backgroundColor: colors.skillBadge }]}
+  >
+    <Text style={[ProfileStyles.skillText, { color: colors.skillText }]}>
+      {skill}
+    </Text>
+  </View>
+);
+
 export default function HomeScreen() {
   const { colors } = useTheme();
 
@@ -12,7 +59,6 @@ export default function HomeScreen() {
       style={[ProfileStyles.container, { backgroundColor: colors.background }]}
       contentContainerStyle={ProfileStyles.contentContainer}
     >
-      {/* Header Section */}
       <View style={ProfileStyles.header}>
         <View
           style={[
@@ -40,38 +86,14 @@ export default function HomeScreen() {
               Computer Science Student
             </Text>
           </View>
-          {/* Theme Toggle */}
           <View style={ProfileStyles.themeToggleContainer}>
             <ThemeToggle />
           </View>
         </View>
       </View>
 
-      {/* Info Cards */}
       <View style={ProfileStyles.cardsContainer}>
-        <View
-          style={[
-            ProfileStyles.infoCard,
-            {
-              backgroundColor: colors.cardBackground,
-              borderColor: colors.cardBorder,
-              shadowColor: colors.cardShadow,
-            },
-          ]}
-        >
-          <View style={ProfileStyles.cardHeader}>
-            <View
-              style={[
-                ProfileStyles.iconContainer,
-                { backgroundColor: colors.iconBackground },
-              ]}
-            >
-              <Text style={ProfileStyles.icon}>🎓</Text>
-            </View>
-            <Text style={[ProfileStyles.cardTitle, { color: colors.text }]}>
-              ข้อมูลการศึกษา
-            </Text>
-          </View>
+        <ProfileCard icon="🎓" title="ข้อมูลการศึกษา" colors={colors}>
           <View style={ProfileStyles.cardContent}>
             <Text
               style={[ProfileStyles.infoText, { color: colors.textSecondary }]}
@@ -89,108 +111,16 @@ export default function HomeScreen() {
               มหาวิทยาลัยข่อนแก่นวิทยาเขตหนองคาย
             </Text>
           </View>
-        </View>
+        </ProfileCard>
 
-        <View
-          style={[
-            ProfileStyles.skillCard,
-            {
-              backgroundColor: colors.cardBackground,
-              borderColor: colors.cardBorder,
-              shadowColor: colors.cardShadow,
-            },
-          ]}
-        >
-          <View style={ProfileStyles.cardHeader}>
-            <View
-              style={[
-                ProfileStyles.iconContainer,
-                { backgroundColor: colors.iconBackground },
-              ]}
-            >
-              <Text style={ProfileStyles.icon}>⚡</Text>
-            </View>
-            <Text style={[ProfileStyles.cardTitle, { color: colors.text }]}>
-              ความสามารถ
-            </Text>
-          </View>
+        <ProfileCard icon="⚡" title="ความสามารถ" colors={colors}>
           <View style={ProfileStyles.skillGrid}>
-            <View
-              style={[
-                ProfileStyles.skillBadge,
-                { backgroundColor: colors.skillBadge },
-              ]}
-            >
-              <Text
-                style={[ProfileStyles.skillText, { color: colors.skillText }]}
-              >
-                React
-              </Text>
-            </View>
-            <View
-              style={[
-                ProfileStyles.skillBadge,
-                { backgroundColor: colors.skillBadge },
-              ]}
-            >
-              <Text
-                style={[ProfileStyles.skillText, { color: colors.skillText }]}
-              >
-                Angular
-              </Text>
-            </View>
-            <View
-              style={[
-                ProfileStyles.skillBadge,
-                { backgroundColor: colors.skillBadge },
-              ]}
-            >
-              <Text
-                style={[ProfileStyles.skillText, { color: colors.skillText }]}
-              >
-                JavaScript
-              </Text>
-            </View>
-            <View
-              style={[
-                ProfileStyles.skillBadge,
-                { backgroundColor: colors.skillBadge },
-              ]}
-            >
-              <Text
-                style={[ProfileStyles.skillText, { color: colors.skillText }]}
-              >
-                TypeScript
-              </Text>
-            </View>
-            <View
-              style={[
-                ProfileStyles.skillBadge,
-                { backgroundColor: colors.skillBadge },
-              ]}
-            >
-              <Text
-                style={[ProfileStyles.skillText, { color: colors.skillText }]}
-              >
-                React Native
-              </Text>
-            </View>
-            <View
-              style={[
-                ProfileStyles.skillBadge,
-                { backgroundColor: colors.skillBadge },
-              ]}
-            >
-              <Text
-                style={[ProfileStyles.skillText, { color: colors.skillText }]}
-              >
-                Node.js
-              </Text>
-            </View>
+            {skills.map((skill, index) => (
+              <SkillBadge key={index} skill={skill} colors={colors} />
+            ))}
           </View>
-        </View>
+        </ProfileCard>
 
-        {/* About Page Button */}
         <Link
           href="/about"
           style={[
@@ -202,7 +132,6 @@ export default function HomeScreen() {
         </Link>
       </View>
 
-      {/* Floating Elements */}
       <View
         style={[
           ProfileStyles.floatingElement1,
