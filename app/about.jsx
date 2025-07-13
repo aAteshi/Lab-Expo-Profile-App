@@ -15,18 +15,41 @@ const About = () => {
     >
       <View style={{ flex: 1 }}>
         <Text style={[AboutStyles.title, { color: colors.text }]}>
-          About Page
+          รหัสวิชา : IN405109
+        </Text>
+
+        <Text
+          style={[
+            AboutStyles.title,
+            { color: colors.text, fontSize: 18, marginTop: 10 },
+          ]}
+        >
+          ชื่อวิชา : การเขียนโปรแกรมบนอุปกรณ์เคลื่อนที่แบบไฮบริด
+        </Text>
+
+        <Text
+          style={[
+            AboutStyles.title,
+            { color: colors.text, fontSize: 18, marginTop: 20 },
+          ]}
+        >
+          คำอธิบายรายวิชา(ไทย) :
         </Text>
         <Text
-          style={[AboutStyles.description, { color: colors.textSecondary }]}
+          style={[
+            AboutStyles.description,
+            { color: colors.textSecondary, marginTop: 10 },
+          ]}
         >
-          This is a profile app built with React Native and Expo Router.
-        </Text>
-        <Text
-          style={[AboutStyles.description, { color: colors.textSecondary }]}
-        >
-          It features a theme toggle functionality that allows switching between
-          light and dark modes.
+          สถาปัตยกรรมฮาร์ดแวร์ คุณลักษณะและข้อจํากัดของอุปกรณ์เคลื่อนที่
+          เครื่องมือและภาษาที่ใช้สําหรับพัฒนาโปรแกรมประยุกต์บนอุปกรณ์เคลื่อนที่หลากหลายแพลตฟอร์ม
+          การพัฒนาโปรแกรมประยุกต์บนอุปกรณ์เคลื่อนที่โดยใช้ภาษาหลากหลายแพลตฟอร์ม
+          กระบวนการพัฒนาโปรแกรมประยุกต์บนอุปกรณ์เคลื่อนที่หลากหลายแพลตฟอร์ม
+          การใช้หน่วยความจําและส่วนเก็บบันทึกข้อมูล
+          การขออนุญาตและการเข้าถึงส่วนฮาร์ดแวร์ ส่วนติดต่อกับผู้ใช้
+          การสื่อสารเครือข่ายกับภายนอก การเชื่อมโยงกับระบบเครืองแม่ข่าย
+          การทดสอบโปรแกรมประยุกต์บนอุปกรณ์เคลื่อนที่โดยใช้ระบบคอมพิวเตอร์
+          ประเด็นด้านความมั่นคง การฝึกปฏิบัติ
         </Text>
       </View>
 
